@@ -15,5 +15,35 @@ This crate can also download, build and statically link its own copy of ffmpeg i
 ffmpeg-sys = { version = "4", features = ["build"] }
 ```
 
+# Versioning
+
+A word on versioning: major and minor versions track major and minor versions of FFmpeg, e.g. 4.2.x of this crate has been updated to support the 4.2.x series of FFmpeg. Patch level is reserved for bug fixes of this crate and does not track FFmpeg patch versions.
+
+## Feature flags
+
+In addition to feature flags declared in `Cargo.toml`, this crate performs various compile-time version and feature detections and exposes the results in additional flags. These flags are briefly documented below; run `cargo build -vv` to view more details.
+
+- `ffmpeg_<x>_<y>` flags (new in v4.3.2), e.g. `ffmpeg_4_3`, indicating the FFmpeg installation being compiled against is at least version `<x>.<y>`. Currently available:
+
+  - `ffmpeg_3_0`
+  - `ffmpeg_3_1`
+  - `ffmpeg_3_2`
+  - `ffmpeg_3_3`
+  - `ffmpeg_3_1`
+  - `ffmpeg_4_0`
+  - `ffmpeg_4_1`
+  - `ffmpeg_4_2`
+  - `ffmpeg_4_3`
+
+- `avcodec_version_greater_than_<x>_<y>` (new in v4.3.2), e.g., `avcodec_version_greater_than_58_90`. The name should be self-explanatory.
+
+- `ff_api_<feature>`, e.g. `ff_api_vaapi`, corresponding to whether their respective uppercase deprecation guards evaluate to true.
+
+- `ff_api_<feature>_is_defined`, e.g. `ff_api_vappi_is_defined`, similar to above except these are enabled as long as the corresponding deprecation guards are defined.
+
 See [Cargo features](https://github.com/meh/rust-ffmpeg/blob/HEAD/Cargo.toml) to control which codecs are included.
 
+# Based On
+
+This combines bits from [meh/rust-ffmpeg-sys](https://github.com/meh/rust-ffmpeg-sys) and [zmwangx/rust-ffmpeg-sys](https://github.com/zmwangx/rust-ffmpeg-sys) because
+when you have two almost identical projects that aren't actively maintained what you _really_ need is a third!
