@@ -9,7 +9,7 @@ authors = ["meh. <meh@schizofreni.co>", "Zhiming Wang <i@zhimingwang.org>"]
 license = "WTFPL"
 
 description = "FFI bindings to FFmpeg"
-repository  = "https://github.com/meh/rust-ffmpeg-sys"
+repository  = "https://github.com/rib/rust-ffmpeg-sys"
 keywords    = ["audio", "video"]
 
 [lib]
